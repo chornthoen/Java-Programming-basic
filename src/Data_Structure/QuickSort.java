@@ -1,0 +1,42 @@
+package Data_Structure;
+
+import java.util.Arrays;
+
+public class QuickSort {
+    public static void main(String[] args) {
+        int [] x={6,7,4,3,5,9,10};
+        System.out.println(Arrays.toString(x));
+        int low = 0;
+        int high = x.length-1;
+        quickSort(x,low,high);
+        System.out.println(Arrays.toString(x));
+    }
+
+    public static void quickSort(int [] arr,int low,int high){
+        int middle = (high+low)/2;
+        int pivot = arr[middle];
+        int i = low,j = high;
+        while (i<=j){
+            while (arr[i] < pivot){
+                i++;
+            }
+            while (arr[j]>pivot){
+                j--;
+            }
+            if(i<=j){
+                int temp = arr[i];
+                arr[i]=arr[j];
+                arr[j]=temp;
+                i++;
+                j--;
+
+            }
+        }
+        if(low<j){
+            quickSort(arr,low,j);
+        }
+        if(high>i){
+            quickSort(arr,i,high);
+        }
+    }
+}
